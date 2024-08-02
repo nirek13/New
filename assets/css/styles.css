@@ -1,5 +1,5 @@
 :root {
-  --background-image: url("../../assets/img/background.svg");
+  --background-image: url("../../assets/img/Background.svg");
   --main-bg-color: #1a1a1a;
   --second-bg-color: #272727;
   --heading-color: #ff6b6b;
@@ -25,7 +25,7 @@
   --click-img-filter: invert(90%);
 }
 :root {
-  --background-image: url("../../assets/img/background.svg");
+  --background-image: url("../../assets/img/Background.svg");
   --main-bg-color: #1a1a1a;
   --second-bg-color: #272727;
   --heading-color: #ff6b6b;
@@ -81,7 +81,7 @@
 }
 /* Theme 2 */
 [data-theme="theme2"] {
-  --background-image: url("../../assets/img/background.svg");
+  --background-image: url("../../assets/img/Background.svg");
   --main-bg-color: #242424;
   --second-bg-color: #333333;
   --heading-color: #ff9800;
@@ -109,7 +109,7 @@
 
 /* Theme 3 */
 [data-theme="theme3"] {
-  --background-image: url("../../assets/img/background.svg");
+  --background-image: url("../../assets/img/Background.svg");
   --main-bg-color: #0f0f17;
   --second-bg-color: #1a1a26;
   --heading-color: #f50057;
@@ -137,7 +137,7 @@
 
 /* Theme 4 */
 [data-theme="theme4"] {
-  --background-image: url("../../assets/img/background.svg");
+  --background-image: url("../../assets/img/Background.svg");
   --main-bg-color: #222831;
   --second-bg-color: #393e46;
   --heading-color: #ff5722;
@@ -165,7 +165,7 @@
 
 /* Theme 5 */
 [data-theme="theme5"] {
-  --background-image: url("../../assets/img/background.svg");
+  --background-image: url("../../assets/img/Background.svg");
   --main-bg-color: #0a192f;
   --second-bg-color: #172a45;
   --heading-color: #fca311;
