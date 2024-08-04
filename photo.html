@@ -9,7 +9,7 @@
       }
     }
   </script>
-  <script src="assets/JSpt.js" ></script>
+
   <script src ="assets/JS/theme.js"></script>
   <meta charset="utf-8">
   <link rel="preconnect" href="https://www.google-analytics.com">
@@ -42,6 +42,7 @@
   <link rel="stylesheet" href="assets/css/animate.min.css">
   <link rel="stylesheet" href="assets/css/codeblock.css">
   <link rel="stylesheet" href="assets/css/styles.css">
+  <link rel="stylesheet" href="assets/css/photo.css">
   <link rel="stylesheet" href="assets/css/typing.css">
   <script>
     document.documentElement.setAttribute('Nirekshetty-data-theme', localStorage.getItem('Nirekshetty-data-theme') === 'light' ? 'light' : 'dark');
@@ -78,16 +79,6 @@
   </div>
 </div>
 <br>
-<!-- Add this section within the body tag -->
-<section id="photo-gallery">
-  <div class="container">
-    <div class="row" id="gallery-images">
-      <!-- Images will be dynamically added here -->
-    </div>
-  </div>
-</section>
-
-
 
 <nav class="navbar navbar-expand-md fixed-top navbar-light" data-aos="fade-down" data-aos-duration="600" data-aos-delay="200" data-aos-once="true">
   <div class="container">
@@ -111,19 +102,50 @@
     </div>
   </div>
 </nav>
-<header class="d-flex content-section p-0" style="background-image: url(&quot;assets/img/float.svg&quot;);background-size: cover;">
-  <div>
-    <div class="container text-block" id="frontpage-content">
-      <p data-aos="fade-up" data-aos-duration="1000" data-aos-delay="200" data-aos-once="true" class="text-start mb-0 fw-semibold">ooops 404</p>
-      <div data-aos="fade-up" data-aos-duration="1000" data-aos-delay="300" data-aos-once="true">
-        <h1 id="fullname" class="noselect"><span class="name"><span>C</span><span>o</span><span>m</span></span><span class="name"><span>i</span><span>n</span><span>g</span><span>&nbsp;</span><span>s</span><span>o</span><span>o</span><span>n</span></span></h1>
-      </div>
-      <h2 data-aos="fade-up" data-aos-duration="1000" data-aos-delay="400" data-aos-once="true" class="text-start mt-3 fw-semibold">don't wake up the cat...</h2>
-      <p data-aos="fade-up" data-aos-duration="1000" data-aos-delay="600" data-aos-once="true" class="text-start mt-3 fw-semibold">lets go back <a href="https://nirekshetty.tech">home</a>.</p>
-      <div data-aos="fade-up" data-aos-duration="1000" data-aos-offset="100" data-aos-delay="1000" data-aos-once="true" class="noselect"><img class="img-fluid links" id="cat" src="assets/img/cat.gif" style="width: clamp(10rem, 35vw, 15rem);margin-top: -1em;" alt="animated cat"></div>
-    </div>
+<h1 class="photoheader">Photo Gallery</h1>
+<div class="gallery">
+  <div class="gallery-item">
+
+    <img src="/assets/PhotoGallery/IMG_4350.png" alt="Photo 1">
+    <div class="caption">Caption 1</div>
   </div>
-</header>
+  <div class="gallery-item">
+    <img src="./assets/PhotoGallery/IMG_4355.png" alt="Photo 2">
+    <div class="caption">Caption 2</div>
+  </div>
+
+  <div class="gallery-item">
+    <img src="assets/PhotoGallery/IMG_4539.png" alt="Photo 5">
+    <div class="caption">Caption 5</div>
+  </div>
+  <div class="gallery-item">
+    <img src="assets/PhotoGallery/IMG_4547.png" alt="Photo 6">
+    <div class="caption">Caption 6</div>
+  </div>
+  <div class="gallery-item">
+    <img src="assets/PhotoGallery/IMG_4549.png" alt="Photo 6">
+    <div class="caption">Caption 6</div>
+  </div>
+  <div class="gallery-item">
+    <img src="assets/PhotoGallery/IMG_4550.png" alt="Photo 6">
+    <div class="caption">Caption 6</div>
+  </div>
+  <div class="gallery-item">
+    <img src="assets/PhotoGallery/IMG_4556.png" alt="Photo 6">
+    <div class="caption">Caption 6</div>
+  </div>
+  <div class="gallery-item">
+    <img src="assets/PhotoGallery/IMG_4558.png" alt="Photo 6">
+    <div class="caption">Caption 6</div>
+  </div>
+  <div class="gallery-item">
+    <img src="assets/PhotoGallery/IMG_4607.png" alt="Photo 6">
+    <div class="caption">Caption 6</div>
+  </div>
+</div>
+
+
+
 <footer>
   <div class="container p-2 p-sm-3 p-lg-4"><a class="footer-body links small noselect" href="https://github.com/nirekshetty/me">Designed &amp; Built by Nirek Shetty<br><i class="fa fa-star-o me-2"></i><span id="github-stars">0</span><i class="fa fa-github-alt mx-3"></i><i class="fa fa-code-fork me-2"></i><span id="github-forks">0</span></a></div><a class="scroll-to-top links hidden" href="#page-top"><i class="fa fa-angle-up"></i></a>
 </footer>

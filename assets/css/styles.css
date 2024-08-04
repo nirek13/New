@@ -953,3 +953,15 @@ input[type="number"]::-webkit-outer-spin-button {
   50% { opacity: 0; }
   100% { opacity: 1; }
 }
+
+
+
+.caption {
+  font-size: 14px;
+  color: var(--main-text-color);
+}
+.photoheader{
+  color: var(--main-text-color);
+  text-align: center;
+  padding: 1rem;
+}
