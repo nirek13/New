@@ -608,7 +608,7 @@ section:nth-last-of-type(odd) {
 }
 
 #cat {
-  max-width: 75%;
+  max-width: 150%;
   height: auto;
 }
 

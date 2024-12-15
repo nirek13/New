@@ -14,7 +14,7 @@ if (cat) {
 		cat.attr('src', '/assets/img/cat-animate.gif');
 
 		setTimeout(() => {
-			cat.attr('src', '/assets/img/cat.gif');
+			cat.attr('src', '/assets/img/cat-animate.gif');
 			animate.isRunning = false;
 		}, 3675);
 	}

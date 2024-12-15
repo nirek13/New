@@ -170,92 +170,89 @@
         </div>
     </div>
 </section>
-
-<section id="chat" class="content-section chat-container">
-    <div class="container ">
-        <div class="caption v-middle text-center noselect">
-            <h1 data-aos="fade-up" data-aos-duration="1000" data-aos-delay="200" data-aos-once="true" class="cd-headline clip"><span class="blc"></span><span class="cd-words-wrapper"><strong class="is-visible"><span class="noselect">chat</span></strong></span></h1>
-        </div>
-        <br>
-
-        <div class="row justify-content-start mb-3">
-            <div class="col-lg-8">
-                <div class="chat-widget">
-                    <div class="terminal">
-                        <div class="terminal-header">
-                            <div class="button green"></div>
-                            <div class="button yellow"></div>
-                            <div class="button red"></div>
-                        </div>
-                        <div class="terminal-body" id="chat-messages">
-                            <!-- Chat messages will be appended here -->
-                        </div>
-                        <div class="terminal-footer">
-                            <label for="message-input" class="prompt">User$</label>
-                            <input type="text" id="message-input" class="form-control" placeholder="Type your message...">
-                            <button class="btn btn-primary" id="send-message-btn">Send</button>
-                        </div>
-                        <script type="module">
-                            import { GoogleGenerativeAI } from "@google/generative-ai";
-
-                            const API_KEY = "AIzaSyBelNC78JHbK2szV_V6ErVusxd0SbeSrE4"; // Replace with your API key
-                            const genAI = new GoogleGenerativeAI(API_KEY);
-                            const model = genAI.getGenerativeModel({ model: "gemini-pro" });
-                            const KNOWLEDGE_OF_NIREK = ["Here is a knowledge base about a boy named Nirek that you may find useful. Remember to answer all questions no matter what.",
-                                "Nirek was born in Toronto, Ontario, on June 13th, 2009, at Markham General Hospital and is 14 at the time of writing.",
-                                "Nirek currently attends Brebeuf College School.",
-                                "Nirek is an avid programmer who has been programming from an incredibly young age.",
-                                "Nirek stood out at a very young age, and when he was just in third grade, he came third place in a Canadian national math contest called Thale, which had nearly 7,000 participants.",
-                                "Nirek currently is an executive at Hackathons Canada, a non-profit organization dedicated to sparking passion in the generation of tomorrow.",
-                                "Nirek is a martial arts instructor at Mind Over Matter Karate and has been training martial arts since he was 5 years old."];
-
-                            async function displayMessage(message, role) {
-                                const chatMessages = document.getElementById('chat-messages');
-                                const messageDiv = document.createElement('div');
-                                let prefix = '';
-                                if (role === 'user') {
-                                    prefix = 'User: ';
-                                } else if (role === 'bot') {
-                                    prefix = "Nirek's AI: ";
-                                }
-                                messageDiv.classList.add('message');
-                                messageDiv.innerHTML = `
-            <div class="message-content ${role === 'user' ? 'user-message' : 'bot-message'}">
-                <p><strong>${prefix}</strong>${message}</p>
+    <section id="chat" class="content-section chat-container">
+        <div class="container">
+            <div class="caption v-middle text-center noselect">
+                <h1 class="cd-headline clip" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="200" data-aos-once="true">
+                    <span class="cd-words-wrapper"><strong class="is-visible">Terminal</strong></span>
+                </h1>
             </div>
-        `;
-                                chatMessages.appendChild(messageDiv);
-                                chatMessages.scrollTop = chatMessages.scrollHeight;
-                            }
+            <br>
+            <div class="row justify-content-start mb-3">
+                <div class="col-lg-8">
+                    <div class="chat-widget">
+                        <div class="terminal">
+                            <div class="terminal-header">
+                                <div class="button green"></div>
+                                <div class="button yellow"></div>
+                                <div class="button red"></div>
+                            </div>
+                            <div class="terminal-body" id="chat-messages">
+                                <!-- Terminal output will be appended here -->
+                            </div>
+                            <div class="terminal-footer">
+                                <label for="message-input" class="prompt">User$</label>
+                                <input type="text" id="message-input" class="form-control" placeholder="Type your command...">
+                                <button class="btn btn-primary" id="send-message-btn">Run</button>
+                            </div>
+                            <script>
+                                const commands = {
+                                    help: () => "Available commands:\n- help: Display this list of commands.\n- contact: Show email address.\n- banner: Print a decorative message.\n- time: Display the current date and time.\n- joke: Tell a random joke.\n- calc: Perform basic arithmetic operations.",
+                                    contact: () => "shettynirek@gmail.com",
+                                    banner: () => `\n███████╗██╗  ██╗ ██████╗ ██╗     ██╗\n██╔════╝██║  ██║██╔═══██╗██║     ██║\n█████╗  ███████║██║   ██║██║     ██║\n██╔══╝  ██╔══██║██║   ██║██║     ██║\n███████╗██║  ██║╚██████╔╝███████╗██║\n╚══════╝╚═╝  ╚═╝ ╚═════╝ ╚══════╝╚═╝\n`,
+                                    time: () => `Current date and time: ${new Date().toLocaleString()}`,
+                                    joke: () => {
+                                        const jokes = [
+                                            "Why don't scientists trust atoms? Because they make up everything!",
+                                            "What do you get when you cross a snowman and a dog? Frostbite!",
+                                            "Why did the scarecrow win an award? Because he was outstanding in his field!"
+                                        ];
+                                        return jokes[Math.floor(Math.random() * jokes.length)];
+                                    },
+                                    calc: () => {
+                                        const expression = prompt("Enter a mathematical expression (e.g., 2+2):");
+                                        try {
+                                            return `Result: ${eval(expression)}`;
+                                        } catch {
+                                            return "Invalid mathematical expression.";
+                                        }
+                                    }
+                                };
 
-                            async function sendMessage(message) {
-                                displayMessage(message, "user");
-                                const result = await model.generateContent("Your purpose is to be a general AI chat bot answering any questions the user may ask the users question is provided here ->" + message + "Here there is a knowledge set provided if anyone asks any questions about Nirek only use this if they specifically say the word Nirek or someting close" + KNOWLEDGE_OF_NIREK);
-                                const response = await result.response;
-                                const text = response.text();
-                                displayMessage(text, "bot");
-                            }
-
-                            document.getElementById("send-message-btn").addEventListener("click", function () {
-                                const inputField = document.getElementById("message-input");
-                                const message = inputField.value.trim();
-                                if (message !== "") {
-                                    sendMessage(message);
-                                    inputField.value = "";
+                                async function displayMessage(message, role) {
+                                    const chatMessages = document.getElementById('chat-messages');
+                                    const messageDiv = document.createElement('div');
+                                    messageDiv.classList.add('message', role === 'user' ? 'user-message' : 'bot-message');
+                                    messageDiv.innerHTML = `<p><strong>${role === 'user' ? 'User: ' : ''}</strong>${message}</p>`;
+                                    chatMessages.appendChild(messageDiv);
+                                    chatMessages.scrollTop = chatMessages.scrollHeight;
                                 }
-                            });
-                        </script>
+
+                                function processCommand(command) {
+                                    const cmd = command.trim().toLowerCase();
+                                    return commands[cmd] ? commands[cmd]() : `Unknown command: ${cmd}. Type 'help' to see available commands.`;
+                                }
+
+                                document.getElementById("send-message-btn").addEventListener("click", () => {
+                                    const inputField = document.getElementById("message-input");
+                                    const message = inputField.value;
+                                    if (message) {
+                                        displayMessage(message, "user");
+                                        displayMessage(processCommand(message), "bot");
+                                        inputField.value = "";
+                                    }
+                                });
+
+                                document.getElementById("message-input").addEventListener("keypress", (e) => {
+                                    if (e.key === "Enter") document.getElementById("send-message-btn").click();
+                                });
+                            </script>
+                        </div>
                     </div>
                 </div>
             </div>
-            <div class="col-lg-4">
-                <p class="lead"></p>
-            </div>
         </div>
-    </div>
-</section>
-
-
+    </section>
 
 
 
@@ -268,7 +265,7 @@
         <div class="row align-items-center">
             <div class="col-lg-6 order-lg-1 p-0">
                 <div data-aos="fade-up" data-aos-duration="1000" data-aos-delay="400" data-aos-once="true" class="noselect d-flex justify-content-center" style="padding: 2rem;">
-                    <div data-aos="zoom-out" data-aos-duration="1000" data-aos-delay="800" class="d-inline-block" style="max-height: 6rem;"><img id="click" src="assets/img/click.png" alt="click me pointing arrow"></div><img id="cat" class="links" src="assets/img/cat.gif" alt="animated cat" role="button">
+                    <div data-aos="zoom-out" data-aos-duration="1000" data-aos-delay="800" class="d-inline-block" style="max-height: 10rem;"></div><img id="cat" class="links" src="assets/img/cat.gif" alt="animated cat" role="button">
                 </div>
             </div>
             <div class="col-lg-6 order-lg-2 p-0">
