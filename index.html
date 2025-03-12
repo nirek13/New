@@ -191,7 +191,7 @@
                                 <!-- Terminal messages will be appended here -->
                             </div>
                             <div class="terminal-footer">
-                                <label for="message-input" class="prompt">jason$</label>
+                                <label for="message-input" class="prompt">nirek$</label>
                                 <input type="text" id="message-input" class="form-control" placeholder="Type your command...">
                                 <button class="btn btn-primary" id="send-message-btn">Send</button>
                             </div>
@@ -199,21 +199,22 @@
                                 // Initialize the terminal with a welcome message
                                 document.addEventListener('DOMContentLoaded', function() {
                                     displayMessage(commands.intro, 'bot');
-                                    displayMessage("Type 'sumfetch' to see Jason's profile summary", 'bot');
+                                    displayMessage("Type 'sumfetch' to see Nirek's profile summary", 'bot');
                                 });
                         
                                 const commands = {
-                                    intro: "Welcome to Jason Cameron's Interactive Terminal! Type 'help' for available commands.",
+                                    intro: "Welcome to Nirek Shetty's Interactive Terminal! Type 'help' for available commands.",
                                     
                                     help: "Available commands:\n" +
                                           "- sumfetch: Display profile summary\n" +
-                                          "- github: Open Jason's GitHub profile\n" +
-                                          "- linkedin: Open Jason's LinkedIn profile\n" +
-                                          "- instagram: Open Jason's Instagram profile\n" +
+                                          "- github: Open Nirek's GitHub profile\n" +
+                                          "- linkedin: Open Nirek's LinkedIn profile\n" +
+                                          "- instagram: Open Nirek's Instagram profile\n" +
                                           "- email: Display contact email\n" +
-                                          "- resume: View Jason's resume\n" +
+                                          "- resume: View Nirek's resume\n" +
                                           "- projects: List key projects\n" +
-                                          "- sponsor: Support Jason's work\n" +
+                                          "- sponsor: Support Nirek's work\n" +
+                                          "- asciiart: Display cool ASCII art\n" +
                                           "- clear: Clear the terminal\n" +
                                           "- fortune: Get a random quote\n" +
                                           "- whoami: Display current user\n" +
@@ -224,46 +225,46 @@
                         @@@@@@@@@@@@@  sumfetch: summary display @@@@ @@@@
                         -----------
                         @@ @@  ABOUT
-                        @@ @@  Jason Cameron
-                        @@ @@ ﰩ jsoncloud
+                        @@ @@  Nirek Shetty
+                        @@ @@ ﰩ nirek
                         @@@ @@  resume
                         @@@ @@ 爵 Github repo
-                        @@@ @@  contact@jasoncameron.dev
+                        @@@ @@  contact@nirekshetty.dev
                         @@ -----------
                         @@ .@@@@@@@@@@. @@  CONNECT WITH ME
-                        @@ @@ @@  instagram.com/jasonlovesdoggo
-                        @@ @@ @@  github.com/JasonLovesDoggo
-                        @@@@@@ @@  linkedin.com/in/jsoncameron
+                        @@ @@ @@  instagram.com/nirekshetty
+                        @@ @@ @@  github.com/nirekshetty
+                        @@@@@@ @@  linkedin.com/in/nirekshetty
                         @@@ @@@
                         ----------- 
                         @@@ @@@ @@  DONATE
-                        @| @@@@@@@@@@@@@@@@ @@  https://github.com/sponsors/JasonLovesDoggo
+                        @| @@@@@@@@@@@@@@@@ @@  https://github.com/sponsors/nirekshetty
                         @| @@`;
                                     },
                                     
                                     github: function() {
-                                        window.open('https://github.com/JasonLovesDoggo', '_blank');
+                                        window.open('https://github.com/nirekshetty', '_blank');
                                         return "Opening GitHub profile...";
                                     },
                                     
                                     linkedin: function() {
-                                        window.open('https://linkedin.com/in/jsoncameron', '_blank');
+                                        window.open('https://linkedin.com/in/nirekshetty', '_blank');
                                         return "Opening LinkedIn profile...";
                                     },
                                     
                                     instagram: function() {
-                                        window.open('https://instagram.com/jasonlovesdoggo', '_blank');
+                                        window.open('https://instagram.com/nirekshetty', '_blank');
                                         return "Opening Instagram profile...";
                                     },
                                     
                                     email: function() {
-                                        navigator.clipboard.writeText('contact@jasoncameron.dev');
-                                        return "Email: contact@jasoncameron.dev (copied to clipboard)";
+                                        navigator.clipboard.writeText('contact@nirekshetty.dev');
+                                        return "Email: contact@nirekshetty.dev (copied to clipboard)";
                                     },
                                     
                                     resume: function() {
                                         // You would replace this URL with your actual resume URL
-                                        window.open('https://jasoncameron.dev/resume.pdf', '_blank');
+                                        window.open('https://nirekshetty.dev/resume.pdf', '_blank');
                                         return "Opening resume...";
                                     },
                                     
@@ -292,8 +293,46 @@
                                     },
                                     
                                     sponsor: function() {
-                                        window.open('https://github.com/sponsors/JasonLovesDoggo', '_blank');
+                                        window.open('https://github.com/sponsors/nirekshetty', '_blank');
                                         return "Opening GitHub Sponsors page. Thanks for your support!";
+                                    },
+                                    
+                                    asciiart: function() {
+                                        const artCollection = [
+                                            `
+                         _   _ _          _      _____ _          _   _         
+                        | \\ | (_)        | |    / ____| |        | | | |        
+                        |  \\| |_ _ __ ___| | __| (___ | |__   ___| |_| |_ _   _ 
+                        | . \` | | '__/ _ \\ |/ /\\___ \\| '_ \\ / _ \\ __| __| | | |
+                        | |\\  | | | |  __/   < ____) | | | |  __/ |_| |_| |_| |
+                        |_| \\_|_|_|  \\___|_|\\_\\_____/|_| |_|\\___|\\__|\\__|\\__, |
+                                                                           __/ |
+                                                                          |___/ 
+                        `,
+                                            `
+                         ███▄    █  ██▓ ██▀███  ▓█████  ██ ▄█▀    ██████  ██░ ██ ▓█████▄▄▄█████▓▄▄▄█████▓▓██   ██▓
+                         ██ ▀█   █ ▓██▒▓██ ▒ ██▒▓█   ▀  ██▄█▒    ▒██    ▒ ▓██░ ██▒▓█   ▀▓  ██▒ ▓▒▓  ██▒ ▓▒ ▒██  ██▒
+                        ▓██  ▀█ ██▒▒██▒▓██ ░▄█ ▒▒███   ▓███▄░    ░ ▓██▄   ▒██▀▀██░▒███  ▒ ▓██░ ▒░▒ ▓██░ ▒░  ▒██ ██░
+                        ▓██▒  ▐▌██▒░██░▒██▀▀█▄  ▒▓█  ▄ ▓██ █▄      ▒   ██▒░▓█ ░██ ▒▓█  ▄░ ▓██▓ ░ ░ ▓██▓ ░   ░ ▐██▓░
+                        ▒██░   ▓██░░██░░██▓ ▒██▒░▒████▒▒██▒ █▄   ▒██████▒▒░▓█▒░██▓░▒████▒ ▒██▒ ░   ▒██▒ ░   ░ ██▒▓░
+                        ░ ▒░   ▒ ▒ ░▓  ░ ▒▓ ░▒▓░░░ ▒░ ░▒ ▒▒ ▓▒   ▒ ▒▓▒ ▒ ░ ▒ ░░▒░▒░░ ▒░ ░ ▒ ░░     ▒ ░░      ██▒▒▒ 
+                        ░ ░░   ░ ▒░ ▒ ░  ░▒ ░ ▒░ ░ ░  ░░ ░▒ ▒░   ░ ░▒  ░ ░ ▒ ░▒░ ░ ░ ░  ░   ░      ░       ▓██ ░▒░ 
+                           ░   ░ ░  ▒ ░  ░░   ░    ░   ░ ░░ ░    ░  ░  ░   ░  ░░ ░   ░    ░        ░       ▒ ▒ ░░  
+                                 ░  ░     ░        ░  ░░  ░            ░   ░  ░  ░   ░  ░                  ░ ░     
+                                                                                                            ░ ░     
+                        `,
+                                            `
+                         +-+-+-+-+-+ +-+-+-+-+-+-+
+                         |N|i|r|e|k| |S|h|e|t|t|y|
+                         +-+-+-+-+-+ +-+-+-+-+-+-+
+                                |\\__/,|   (\`\\
+                              _.|o o  |_   ) )
+                            -(((---(((--------
+                             Coder & Innovator
+                        `
+                                        ];
+                                        
+                                        return artCollection[Math.floor(Math.random() * artCollection.length)];
                                     },
                                     
                                     clear: function() {
@@ -313,7 +352,7 @@
                                     },
                                     
                                     whoami: function() {
-                                        return "You are a visitor to Jason Cameron's interactive terminal.";
+                                        return "You are a visitor to Nirek Shetty's interactive terminal.";
                                     },
                                     
                                     fun: function() {
@@ -380,7 +419,7 @@
                                     const messageDiv = document.createElement('div');
                                     let prefix = '';
                                     if (role === 'user') {
-                                        prefix = 'jason$ ';
+                                        prefix = 'nirek$ ';
                                     } else if (role === 'bot') {
                                         prefix = "terminal: ";
                                     }
@@ -428,6 +467,11 @@
                                         document.getElementById("send-message-btn").click();
                                     }
                                 });
+                                
+                                // Auto-display ASCII art on load for a nice welcome
+                                setTimeout(() => {
+                                    processCommand("asciiart");
+                                }, 1000);
                             </script>
                         </div>
                     </div>
