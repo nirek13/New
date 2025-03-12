@@ -1,98 +1,340 @@
-\documentclass[a4paper,10pt]{article}
-\usepackage{geometry}
+%! Author = Nirek Shetty
+%! Date = 2024-01-28
+% resume.tex
+% vim:set ft=tex spell:
+
+\documentclass[11pt,letterpaper]{article}
+
+\usepackage{latexsym}
+\usepackage[empty]{fullpage}
+\usepackage{titlesec}
+\usepackage[usenames,dvipsnames]{color}
+\usepackage{verbatim}
 \usepackage{enumitem}
 \usepackage[hidelinks]{hyperref}
-\usepackage{titlesec}
-\usepackage{parskip}
-\geometry{left=1in, right=1in, top=1in, bottom=1in}
+\usepackage{fancyhdr}
+% \usepackage[english]{babel}
+% \usepackage{tabularx}
+\input{glyphtounicode}
+\pagestyle{empty}
+\setlength{\tabcolsep}{0em}
 
-\titleformat{\section}{\Large\bfseries}{}{0em}{}[\titlerule]
-\titleformat{\subsection}{\large\bfseries}{}{0em}{}
+
+
+%----------FONT OPTIONS----------
+% \usepackage[sfdefault]{FiraSans}
+% \usepackage[sfdefault]{roboto}
+% \usepackage[sfdefault]{noto-sans}
+\usepackage[default]{sourcesanspro}
+
+% \usepackage[letterpaper,margin=0.8in]{geometry}
+\usepackage[T1]{fontenc}
+
+
+% serif
+% \usepackage{CormorantGaramond}
+% \usepackage{charter}
+
+\pagestyle{fancy}
+\fancyhf{} % clear all header and footer fields
+\fancyfoot{}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+
+% Adjust margins
+% \usepackage[bottom=0.5in,top=0.4in,left=0.4in,right=0.4in]{geometry}
+\addtolength{\oddsidemargin}{-0.5in}
+\addtolength{\evensidemargin}{-0.5in}
+\addtolength{\textwidth}{1in}
+\addtolength{\topmargin}{-0.7in}
+% \addtolength{\}{}
+\addtolength{\textheight}{1.0in}
+
+\urlstyle{same}
+
+\raggedbottom
+\raggedright
+\setlength{\tabcolsep}{0in}
+
+% Sections formatting
+\titleformat{\section}{
+    \vspace{-4pt}\scshape\raggedright\large
+}{}{0em}{}[\color{black}\titlerule \vspace{-5pt}]
+
+% Ensure that generate pdf is machine readable/ATS parsable
+\pdfgentounicode=1
+
+% Social Icons
+\usepackage{fontawesome5}
+
+\usepackage{supertabular}
+\newlength{\fullcollw}
+\setlength{\fullcollw}{0.42\textwidth}
+
+%-------------------------
+% Custom commands
+\newcommand{\resumeItem}[1]{
+    \item\small{
+            {#1 \vspace{-2pt}}
+    }
+}
+
+\newcommand{\resumeSubheading}[4]{%
+    \vspace{-2pt}\item
+    \begin{tabular*}{0.97\textwidth}[t]{@{}l@{\extracolsep{\fill}}r@{}}
+    \textbf{#1} & #2 \\
+    \ifx & #3 &%
+    \else
+        \textit{\small#3} &
+    \fi
+    \ifx & #4 &%
+    \else
+        \textit{\small #4} \\
+    \fi
+    \end{tabular*}\vspace{-7pt}%
+
+}
+\newcommand{\resumeTwoJobHeading}[6]{
+    \vspace{-2pt}\item
+    \begin{tabular*}{0.97\textwidth}[t]{@{}l@{\extracolsep{\fill}}r@{}}
+    \textbf{#1} & #2 \\
+    \textbf{#3} & #4
+    \ifx & #5 &%
+    \else
+        \textit{\small#5} &
+    \fi
+    \ifx & #6 &%
+    \else
+        \textit{\small #6} \\
+    \fi
+    \end{tabular*}\vspace{-7pt}%
+}
+
+\newcommand{\shortResumeSubheading}[2]{%
+    \vspace{-2pt}\item
+    \begin{tabular*}{0.97\textwidth}[t]{@{}l@{\extracolsep{\fill}}r@{}}
+    \textbf{#1} & #2 \\
+    \end{tabular*}\vspace{-7pt}%
+}
+
+
+
+\newcommand{\resumeSubSubheading}[2]{
+    \item
+    \begin{tabular*}{0.97\textwidth}{l@{\extracolsep{\fill}}r}
+    \textit{\small#1} & \textit{\small #2} \\
+    \end{tabular*}\vspace{-7pt}
+}
+
+\newcommand{\resumeProjectHeading}[2]{
+    \item
+    \begin{tabular*}{0.97\textwidth}{l@{\extracolsep{\fill}}r}
+    \small#1 & #2 \\
+    \end{tabular*}
+    \vspace{-7pt}
+}
+\newcommand{\resumeProjectHeadingWithDescription}[4]{
+    \item
+    \begin{tabular*}{0.97\textwidth}{l@{\extracolsep{\fill}}r}
+    \small#2 $-$ \githubUrl{#1} & #3 \\
+    \end{tabular*}
+    \vspace{-7pt}
+    \small{#4}
+}
+
+\newcommand{\resumeSubItem}[1]{\resumeItem{#1}\vspace{-4pt}}
+
+\renewcommand\labelitemii{$\vcenter{\hbox{\tiny$\bullet$}}$}
+
+\newcommand{\resumeSubHeadingListStart}{\begin{itemize}[leftmargin=0.15in, label={}]}
+\newcommand{\resumeSubHeadingListEnd}{\end{itemize}}
+\newcommand{\resumeItemListStart}{\begin{itemize}}
+\newcommand{\resumeItemListEnd}{\end{itemize}\vspace{-5pt}}
+\newcommand{\utextbf}[1]{\underline{\textbf{#1}}}
+
+\makeatletter
+\newcommand{\githubUrl}[1]{%
+\href{#1}{\faGithub}%
+}
+\makeatother
+%-------------------------------------------
+%%%%%%  RESUME STARTS HERE  %%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \begin{document}
 
-\begin{center}
-    \textbf{\huge Nirek Shetty}\\
-    Passionate Programmer, Team Member, Leader, and Teacher, Driven To Bring The Best I Can To Wherever Life Takes Me.
-\end{center}
+\begin{document}
+
+%----------HEADING----------
+% \begin{tabular*}{\textwidth}{l@{\extracolsep{\fill}}r}
+%   \textbf{\href{http://sourabhbajaj.com/}{\Large Sourabh Bajaj}} & Email : \href{mailto:sourabh@sourabhbajaj.com}{sourabh@sourabhbajaj.com}\\
+%   \href{http://sourabhbajaj.com/}{http://www.sourabhbajaj.com} & Mobile : +1-123-456-7890 \\
+% \end{tabular*}
 
 \begin{center}
-    Toronto, M2N 2C8 \\
-    647 - 346 - 4162 \\
-    \href{mailto:shettynirek@gmail.com}{shettynirek@gmail.com} \\
-    \href{https://github.com/nirek13}{github.com/nirek13} \\
-    \href{https://nirekshetty.tech}{nirekshetty.tech}
+    \textbf{\Huge \scshape Nirek Shetty} \\ \vspace{1pt}
+    \small \href{nirekshetty.com}{\underline{nirekshetty.com}} $|$ \href{mailto:shettynirek@gmail.com}{\underline{shettynirek@gmail.com}} $|$ 
+    \href{https://www.linkedin.com/in/nirek-shetty-a9a7322b5/}{\underline{LinkedIn}} $|$
+    \href{https://github.com/nirek13}{\underline{GitHub}}
 \end{center}
 
-\section*{EXPERIENCE}
+%-----------EXPERIENCE-----------
+\section{Experiences}
+\resumeSubHeadingListStart
 
-\subsection*{Satellite Campus, Hackathon Team, Toronto}
-\textit{December 2023 - PRESENT}\\
-\begin{itemize}[leftmargin=*]
-    \item Youngest member of a team ranked Top 40 in the world by NASA.
-    \item Represented the team in nationwide competitions, demonstrating adaptability by acquiring and implementing diverse skills on short notice.
-    \item Sponsorship and pitching Co-Lead winning an award at my first competition.
-    \item Pitched innovative ideas to distinguished judges, industry experts and even the City Councillor of Milton, ON.
-\end{itemize}
 
-\subsection*{Hackathons Canada 501 (c)(3) Non Profit, Founding Member}
-\textit{January 2024 - PRESENT}\\
-\begin{itemize}[leftmargin=*]
-    \item Proud member and Co-Builder of the Canadian Hackers Website.
-    \item Instrumental in the exponential growth of our community, witnessing an increase from a few individuals to nearly 1,000 in a matter of months.
-    \item Acquired substantial real-world experience in pitching innovative ideas to industry leaders, including successful engagements with companies like Microsoft and HCB.
-    \item Co-Led a team and orchestrated collaboration among multiple teams working under firm deadlines, showcasing effective leadership and teamwork skills.
-\end{itemize}
 
-\subsection*{Mind Over Matter Karate, Martial Arts Instructor}
-\textit{November 2021 - PRESENT}\\
-\begin{itemize}[leftmargin=*]
-    \item Passionately taught kids the principles of self-defense, emphasizing values such as perseverance, mental and physical strength, humility, and the transformation of emotions into productivity.
-    \item Acquired valuable leadership skills and extensive experience working with younger kids and motivating them to push past their limits.
-\end{itemize}
+% Storage Box
 
-\subsection*{Buffoons Team \#22544, First Tech Canada, Team Lead}
-\textit{September 2023 - December 2023}\\
-\begin{itemize}[leftmargin=*]
-    \item Served as the leader of my team, playing pivotal roles in delivering pitches to judges, programming our entire bot, networking with other teams, and overseeing overall team management.
-    \item Led the team in devising innovative and unconventional ideas, securing a 2nd Place Design Award and highlighting a commitment to creative problem-solving and constant innovation.
-\end{itemize}
+\resumeSubheading{Co-Founder}{Sep. 2024 - Present}{\textit{\href{https://www.contractual.ca/}{Contractual}}}{Toronto, ON}
 
-\section*{PROJECTS}
+\resumeItemListStart
+\resumeItem{Created a platform that allows small contracting companies and individual contractors to compete for government contracts}
+\resumeItem{Helped contractors and companies score over \textbf{\$600,000} in government contracts with the Canadian government through a multi-step process that enhances and simplifies the user experience of contract bidding}
 
-\subsection*{Demeter AI}
-This is my upcoming submission to the GenAI hackathon run by the D\(^3\) Institute from Harvard hosted at Microsoft HQ. The purpose of this project is to process DNA primer strips to recognize and taxonomically classify organisms providing farmers with comprehensive treatments which not only would improve the farmers crop yield but have huge spillover effects into daily life and society.
 
-\subsection*{Cat Smasher}
-Embark on a whimsical gaming adventure with our retro-inspired Pong rendition. Picture this: one player, armed with a motion controller, engages in a lively duel against an unbeatable AI opponent. The twist? Instead of the conventional ball, players find themselves gleefully bashing a cat around the screen. The atmosphere is set with unbelievably cheery music, creating a blend of classic gameplay, motion control antics, and humor. Get ready for a gaming experience that's not only entertaining but also delightfully quirky! 🥇 - Halton Hacks Best Rookie Hack
+\resumeItem{Boosted platform responsiveness by \textbf{136x} by implementing Celery and Valkey for background task processing}
+\resumeItemListEnd
 
-\subsection*{RedLeaf Finance}
-RedLeaf Finance was the finance app I created when I was just ten years old. It enabled users to buy, sell, obtain quoted prices, check their holdings, and view their losses and profits. While it may not be the most impressive project I've ever undertaken, I decided to include it on the list due to the sheer personal pride I felt upon its completion. This project holds special significance for me as it played a pivotal role in sparking my passion for programming and ultimately led me to be who I am today.
+% Metropolis
 
-\textbf{These are just a few of the projects I have created thus far and I invite you to view a more complete collection of these projects at \href{https://github.com/nirek13}{https://github.com/nirek13}}
+\resumeSubheading
+{Admin Team}{December 2023 - Present}
+% {Backend Developer}{Sep. 2022 - Jun. 2023}
+{\href{https://hackcanada.org/}{\textit{Hackathons Canada}}}{Toronto, ON}
 
-\section*{SKILLS}
-\begin{itemize}[leftmargin=*]
-    \item Fluent In Most Major Programming Languages
-    \item Lots of Experience With Machine Learning Algorithms
-    \item Quick Study And Able To Learn New Technologies Quickly
-    \item Lots Of Marketing And Pitching Experience
-    \item Real World Leadership And Team Collaboration Skills
-\end{itemize}
+\resumeItemListStart
+\resumeItem{Spearheaded fundraising efforts, securing over \textbf{\$45,000} in sponsorships and in-kind contributions to support national hackathons and technology events across Canada.}
+\resumeItem{Led a team of 11 individuals, providing strategic direction, fostering collaboration, and ensuring the successful execution of multiple large-scale events.}
+\resumeItem{Helped run social media campaigns that amassed over \textbf{25 million+} views}
+\resumeItem{Ran events for over 600+ High School and University students, managing over 20 volunteers}
 
-\section*{AWARDS AND ACHIEVEMENTS}
-\begin{itemize}[leftmargin=*]
-    \item 3RD Rank In Canadian National Math Contest Thale Against Nearly 7,000 Participants
-    \item Best Rookie Hack At Halton Hacks Inaugural Event
-    \item Certificate Of Achievement From Canadian National Fluid Power Association
-    \item 2ND Place Design Award FTC Mississauga Event
-    \item 3RD Place Connect Award FTC Bolton Event
-    \item Finished Harvard Cs50 At Ten Years Old
-    \item WMS Award for Excellences in The Sciences ‘20
-    \item Honour Roll Student At Brebeuf College School
-    \item 5x Time Waterloo Distinction Winner
-    \item Pascal Contest School Champion
-    \item Won Silver+ at OBA a provincial band association with an invitation to Nationals
-\end{itemize}
 
+\resumeItemListEnd
+
+
+% Lassonde
+
+
+
+
+% Hackathons Canada
+% MCPT
+
+
+
+% % Tutor
+% \resumeSubheading{Computer Science Tutor}{Dec. 2023 - Present}{}{}
+% \vspace{-14px}
+% {Mackenzie Computer Programming Team / freelance}{Toronto, ON}
+% \resumeItemListStart
+% \resumeItem{Gave one-on-one and group lessons on Python \& basic web development to students aged 7 to 16
+% \resumeItem{Instructed students aged 7-16 in Scratch, Python and basic web development through one-on-one and  {\null\hfill\textit{\small \small Toronto, ON}} \\
+% group lessons. Utilized a blend of interactive exercises and project-based learning to foster understanding}
+% % \resumeItem{Contest detail from \textbf{8s} to \textbf{0.097s} which is over 80x faster}
+% % \resumeItem{Automated API documentation generation conforming to OpenAPI 3.1 standards, saving \textbf{5} hours monthly per developer}
+% % \resumeItem{Optimized database queries by over \textbf{100x} reducing avg time from \textbf{8s} to just \textbf{0.078s}}
+
+% \resumeItemListEnd
+
+\resumeSubHeadingListEnd
+
+%----------- Projects-----------
+
+
+\section{Projects \texorpdfstring{\hfill{\normalsize\normalfont\href{https://www.nirekshetty.com/project.html}{nirekshetty.com/projects.html}}}{nirekshetty.tech/\#/projects}}
+\resumeSubHeadingListStart
+
+\resumeProjectHeadingWithDescription
+{https://github.com/elebumm/RedditVideoMakerBot}
+{\underline{\href{https://voyager-o.ca}{\textbf{Voyager-O}}} $|$ \emph{React , Python , Procfile}}{October 2024}
+{AI-powered tool for analyzing space data, providing automated insights and visualizations to streamline scientific research }
+\resumeItemListStart
+\resumeItem{Built in under 48 hours this project won Global Nominee at the worlds largest hackathon NASA Space Apps}
+\resumeItem{Renders all \textbf{5,849} planets in the NASA exoplanet archive and over \textbf{2 billion} stars}
+\resumeItem{Used shaders to limit GPU latency and Planck's law to provide accurate colour depictions}
+\resumeItemListEnd
+
+
+
+
+
+\resumeProjectHeadingWithDescription
+{https://github.com/nirek13/AGEile/}
+{\underline{\textbf{\href{https://AGEile.nirekshett.tech}{AGEile}}} $|$ \emph{Swift, Python, React, PostgreSQL,}}{Jan. 2024 - Present}
+{AGEile is an IOS app designed to isolate fall predictors in seniors}
+\resumeItemListStart
+\resumeItem{Developed an iOS app for seniors and a web client for physiotherapists to monitor and manage mobility data, integrating ESP32 hardware tethered via BLE}
+\resumeItemListEnd
+
+% \resumeProjectHeadingWithDescription
+% {https://github.com/wlmac/scavenger}
+% {\underline{\href{https://github.com/wlmac/scavenger}{\textbf{Scavenger Hunt }}} $|$  \emph{Python, Django, CSS, JS, PKCE2, OAuth 2.0}}{Nov 2022-Present}{}
+% \resumeItemListStart
+% \resumeItem{Developed a Django-based scavenger hunt platform with anti-cheat/teaming systems and support for multiple concurrent hunts to ensure fair and strategic gameplay}
+% \resumeItemListEnd
+
+% \resumeProjectHeadingWithDescription
+% {https://github.com/nirek13/ScreenTimeShowdown}
+% {\underline{\textbf{\href{https://devpost.com/software/screentime-showdown}{Screentime Showdown - Best Financial Hack At} \href{https://hackthevalley.io/}{HTV 8}}} $|$ \emph{Express, React, OAuth 2.0, Meta, Paybilt, Cohere}}{Oct. 2023}
+% {Helping people quit social media with the help of friendly competition and some monetary gain}
+% \resumeItemListStart
+% \resumeItem{Integrated Meta's OAuth 2.0 and Webhook API for real-time user activity detection across all Meta platforms on all devices}
+% \resumeItemListEnd
+
+% \resumeProjectHeadingWithDescription
+% {https://github.com/nirek13/jamhacks}
+% {\underline{\textbf{\href{https://devpost.com/software/physioquest}{PhysioQuest - Best Use Of MongoDB At} \href{https://www.jamhacks.ca/}{JAMHacks 7}}} $|$ \emph{Python, Django, HTML, JS, CSS, OpenCV, MongoDB}}{Jun. 2023}
+% {Gamifying physiotherapy with AI to encourage consistency and accuracy when completing exercises}
+% \resumeItemListStart
+% \resumeItem{Designed and implemented the backend API and database models using Django and Django Rest Framework}
+% \resumeItem{Integrated our CV model to the end user’s webcam using Django channels, enabling compatibility with devices globally}
+% \resumeItemListEnd
+
+
+\resumeSubHeadingListEnd
+
+%-----------AWARDS & ACHIEVEMENTS-----------
+\section{Awards and Achievements}
+\resumeSubHeadingListStart
+\resumeItemListStart
+
+\resumeItem{Silver Award, IOAI Canada (National Selection)}
+\resumeItem{NASA Space Apps Global Nominee (93.5k participants)}
+\resumeItem{CCC Junior Group 2 Honour Roll (73/75) Test Score}
+\resumeItem{3rd Rank, Canadian National Math Contest Thale (7,000 participants)}
+\resumeItem{5x Waterloo Distinction Winner (Pascal, Gauss, etc.)}
+\resumeItem{Best Rookie Hack, Halton Hacks}
+\resumeItem{2nd Place Design Award, FIRST Tech Challenge (Mississauga)}
+\resumeItem{3rd Place Connect Award, FIRST Tech Challenge (Bolton)}
+\resumeItem{Certificate of Achievement, Canadian National Fluid Power Association}
+\resumeItem{Honour Roll Student, Brebeuf College School}
+\resumeItem{Silver+, Ontario Band Association (Invitation to Nationals)}
+
+\resumeItemListEnd
+\resumeSubHeadingListEnd
+
+
+%-----------EDUCATION-----------
+\section{Formal Education}
+\resumeSubHeadingListStart
+\shortResumeSubheading
+{Brebeuf College School}{Toronto, Ontario}
+% {Sep. 2022- Jun. 2026}
+\resumeItemListStart
+\resumeItem{\textbf{Extracurriculars: }STEAM Council, Trivia Team , Robotics, Baseball, Frisbee , Senior Band, Science Fair}
+\resumeItem{\textbf{Course Load:} AP Calculus AB, AP Calculus BC, AP English, AP Computer Science , }
+% \href{https://flounder.news}{School Satirical Newspaper} (\emph{Web Developer}), Robotics Club (\emph{Member})}
+\resumeItemListEnd
+\resumeSubHeadingListEnd
+
+
+%-----------PROGRAMMING SKILLS-----------
+\section{Skills}
+\small{
+\textbf{Languages}{: Python, Java, JavaScript/Typescript, Swift,  Kotlin, ,  HTML, CSS/SCSS} \\
+\textbf{DevOps Tools}{: Linux, Caddy, Nginx, traefik, Docker (Swarm, Compose, BuildX), Cloudflare, WireGuard, GitHub Actions} \\
+\textbf{Tools/Frameworks}{: Django, FastAPI, Flask, React, Svelte, Astro, Gin, Celery, Postman, Tailscale, Git} \\
+\textbf{Databases}{: PostgreSQL (PostGIS), SQLite, RocksDB, Valkey, Redis, MongoDB} \\
+\textbf{Specializations}{: Backend Web Development, AI  + Machine Learning, System Administration, Mobile Devolopment} \\
+}
 \end{document}

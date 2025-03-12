@@ -191,105 +191,228 @@
                                 <!-- Terminal messages will be appended here -->
                             </div>
                             <div class="terminal-footer">
-                                <label for="message-input" class="prompt">User$</label>
+                                <label for="message-input" class="prompt">jason$</label>
                                 <input type="text" id="message-input" class="form-control" placeholder="Type your command...">
                                 <button class="btn btn-primary" id="send-message-btn">Send</button>
                             </div>
                             <script type="module">
-                                let currentGame = null;
-
+                                // Initialize the terminal with a welcome message
+                                document.addEventListener('DOMContentLoaded', function() {
+                                    displayMessage(commands.intro, 'bot');
+                                    displayMessage("Type 'sumfetch' to see Jason's profile summary", 'bot');
+                                });
+                        
                                 const commands = {
-                                    intro: "Welcome to the Fun Terminal! Type 'help' for wacky commands.",
-                                    fortune: "A mysterious fortune awaits you: Keep an eye out for penguins!",
-                                    tellajoke: "Why did the computer go to therapy? It had too many bytes of emotional baggage!",
-                                    alien: "An alien has landed on Earth. It asks: 'Do you want to dance or eat tacos?' Choose wisely.",
-                                    dance: "💃🕺 Let's do the Macarena! Type 'stopdancing' to stop.",
-                                    whoami: "You are the coolest human in the universe. Now go ahead and prove it.",
-                                    superhero: "If you could have any superpower, what would it be? Choose wisely.",
+                                    intro: "Welcome to Jason Cameron's Interactive Terminal! Type 'help' for available commands.",
+                                    
+                                    help: "Available commands:\n" +
+                                          "- sumfetch: Display profile summary\n" +
+                                          "- github: Open Jason's GitHub profile\n" +
+                                          "- linkedin: Open Jason's LinkedIn profile\n" +
+                                          "- instagram: Open Jason's Instagram profile\n" +
+                                          "- email: Display contact email\n" +
+                                          "- resume: View Jason's resume\n" +
+                                          "- projects: List key projects\n" +
+                                          "- sponsor: Support Jason's work\n" +
+                                          "- clear: Clear the terminal\n" +
+                                          "- fortune: Get a random quote\n" +
+                                          "- whoami: Display current user\n" +
+                                          "- fun: Show fun commands",
+                                    
+                                    sumfetch: function() {
+                                        return `
+                        @@@@@@@@@@@@@  sumfetch: summary display @@@@ @@@@
+                        -----------
+                        @@ @@  ABOUT
+                        @@ @@  Jason Cameron
+                        @@ @@ ﰩ jsoncloud
+                        @@@ @@  resume
+                        @@@ @@ 爵 Github repo
+                        @@@ @@  contact@jasoncameron.dev
+                        @@ -----------
+                        @@ .@@@@@@@@@@. @@  CONNECT WITH ME
+                        @@ @@ @@  instagram.com/jasonlovesdoggo
+                        @@ @@ @@  github.com/JasonLovesDoggo
+                        @@@@@@ @@  linkedin.com/in/jsoncameron
+                        @@@ @@@
+                        ----------- 
+                        @@@ @@@ @@  DONATE
+                        @| @@@@@@@@@@@@@@@@ @@  https://github.com/sponsors/JasonLovesDoggo
+                        @| @@`;
+                                    },
+                                    
+                                    github: function() {
+                                        window.open('https://github.com/JasonLovesDoggo', '_blank');
+                                        return "Opening GitHub profile...";
+                                    },
+                                    
+                                    linkedin: function() {
+                                        window.open('https://linkedin.com/in/jsoncameron', '_blank');
+                                        return "Opening LinkedIn profile...";
+                                    },
+                                    
+                                    instagram: function() {
+                                        window.open('https://instagram.com/jasonlovesdoggo', '_blank');
+                                        return "Opening Instagram profile...";
+                                    },
+                                    
+                                    email: function() {
+                                        navigator.clipboard.writeText('contact@jasoncameron.dev');
+                                        return "Email: contact@jasoncameron.dev (copied to clipboard)";
+                                    },
+                                    
+                                    resume: function() {
+                                        // You would replace this URL with your actual resume URL
+                                        window.open('https://jasoncameron.dev/resume.pdf', '_blank');
+                                        return "Opening resume...";
+                                    },
+                                    
+                                    projects: function() {
+                                        return `Major Projects:
+                        1. Project One - Description
+                        2. Project Two - Description
+                        3. Project Three - Description
+                        
+                        Type 'project [number]' for more details.`;
+                                    },
+                                    
+                                    project: function(args) {
+                                        const projectNum = parseInt(args);
+                                        if (isNaN(projectNum) || projectNum < 1 || projectNum > 3) {
+                                            return "Please specify a valid project number (1-3)";
+                                        }
+                                        
+                                        const projects = [
+                                            "Project One: A detailed description of this project would go here, including technologies used and outcomes achieved.",
+                                            "Project Two: A detailed description of this project would go here, including technologies used and outcomes achieved.",
+                                            "Project Three: A detailed description of this project would go here, including technologies used and outcomes achieved."
+                                        ];
+                                        
+                                        return projects[projectNum - 1];
+                                    },
+                                    
+                                    sponsor: function() {
+                                        window.open('https://github.com/sponsors/JasonLovesDoggo', '_blank');
+                                        return "Opening GitHub Sponsors page. Thanks for your support!";
+                                    },
+                                    
+                                    clear: function() {
+                                        document.getElementById('chat-messages').innerHTML = '';
+                                        return "";
+                                    },
+                                    
+                                    fortune: function() {
+                                        const fortunes = [
+                                            "The best code is no code at all.",
+                                            "Good things come to those who git commit often.",
+                                            "Your next project will be your best yet.",
+                                            "Hardware eventually fails. Software eventually works.",
+                                            "Today is a good day to refactor."
+                                        ];
+                                        return "🔮 " + fortunes[Math.floor(Math.random() * fortunes.length)];
+                                    },
+                                    
+                                    whoami: function() {
+                                        return "You are a visitor to Jason Cameron's interactive terminal.";
+                                    },
+                                    
+                                    fun: function() {
+                                        return "Fun commands:\n" +
+                                               "- tellajoke: Get a programming joke\n" +
+                                               "- magic8ball: Ask the magic 8-ball\n" +
+                                               "- riddle: Get a random riddle\n" +
+                                               "- randomfact: Learn something new";
+                                    },
+                                    
+                                    tellajoke: function() {
+                                        const jokes = [
+                                            "Why do programmers prefer dark mode? Because light attracts bugs!",
+                                            "How many programmers does it take to change a light bulb? None, that's a hardware problem.",
+                                            "Why was the JavaScript developer sad? Because he didn't know how to 'null' his feelings.",
+                                            "!false - It's funny because it's true!",
+                                            "A SQL query walks into a bar, walks up to two tables and asks, 'Can I join you?'"
+                                        ];
+                                        return jokes[Math.floor(Math.random() * jokes.length)];
+                                    },
+                                    
                                     magic8ball: function() {
                                         const responses = [
-                                            "Yes, absolutely!",
-                                            "No way, Jose!",
-                                            "Ask again later...",
-                                            "I wouldn't count on it.",
-                                            "Definitely... maybe."
+                                            "It is certain.",
+                                            "Reply hazy, try again.",
+                                            "Don't count on it.",
+                                            "Without a doubt.",
+                                            "My sources say no.",
+                                            "Outlook good.",
+                                            "Signs point to yes.",
+                                            "Better not tell you now."
                                         ];
-                                        return responses[Math.floor(Math.random() * responses.length)];
+                                        return "🎱 " + responses[Math.floor(Math.random() * responses.length)];
                                     },
-                                    unmask: "You are not just any user, you're a secret agent undercover. Mission: unknown.",
-                                    timewarp: "You've just activated the timewarp. The year is 2099. Do you still exist? Type 'exit' to find out.",
+                                    
                                     riddle: function() {
                                         const riddles = [
-                                            { question: "What comes once in a minute, twice in a moment, but never in a thousand years?", answer: "The letter 'M'" },
-                                            { question: "What has keys but can't open locks?", answer: "A piano" },
-                                            { question: "I have cities, but no houses. I have forests, but no trees. I have rivers, but no water. What am I?", answer: "A map" }
+                                            { question: "What has keys but can't open locks?", answer: "A keyboard" },
+                                            { question: "What gets wetter as it dries?", answer: "A towel" },
+                                            { question: "What can be broken but never held?", answer: "A promise" }
                                         ];
                                         const riddle = riddles[Math.floor(Math.random() * riddles.length)];
-                                        return riddle.question;
+                                        return `Riddle: ${riddle.question}\n\nType 'answer' to see the solution.`;
                                     },
-                                    confessions: "Time for confessions! What's your deepest, darkest secret? (Just kidding, but tell me a fun fact!)",
-                                    randomdance: function() {
-                                        const dances = [
-                                            "🕺 Doing the Robot",
-                                            "💃 Moonwalkin' like Michael Jackson",
-                                            "💃 The Floss",
-                                            "🕺 The Macarena"
+                                    
+                                    answer: function() {
+                                        return "The answer depends on the riddle. Type 'riddle' to get a new one!";
+                                    },
+                                    
+                                    randomfact: function() {
+                                        const facts = [
+                                            "The first computer bug was an actual real-life bug.",
+                                            "The first programmer was a woman named Ada Lovelace.",
+                                            "The term 'debugging' was coined by Grace Hopper in 1947.",
+                                            "The first website is still online at info.cern.ch.",
+                                            "JavaScript was created in just 10 days."
                                         ];
-                                        return dances[Math.floor(Math.random() * dances.length)];
-                                    },
-                                    worldcup: function() {
-                                        const teams = ["USA", "Brazil", "Germany", "France", "Argentina"];
-                                        const winner = teams[Math.floor(Math.random() * teams.length)];
-                                        return `The World Cup Winner is: ${winner}! 🏆⚽`;
-                                    },
-                                    rollercoaster: "You are about to embark on a rollercoaster ride! Hold on tight! Type 'whee' to scream!",
-                                    mythbuster: "Is it true that you can survive a fall from any height? Mythbuster time: Type 'bustmyth' to find out!",
-                                    spaceship: "🚀 You've boarded a spaceship! Type 'launch' to blast off into space!",
-                                    fortune_teller: "The fortune teller gazes into the crystal ball and says: 'You will discover something incredible today!'",
-                                    time_travel: function() {
-                                        const years = [1969, 1999, 2050, 3000];
-                                        const travelYear = years[Math.floor(Math.random() * years.length)];
-                                        return `Time travel activated! You're now in the year ${travelYear}! ⏳`;
-                                    },
-                                    help: "Here are some fun commands you can try: intro, fortune, tellajoke, alien, dance, whoami, superhero, magic8ball, unmask, timewarp, riddle, confessions, randomdance, worldcup, rollercoaster, mythbuster, spaceship, fortune_teller, time_travel.",
+                                        return "📚 " + facts[Math.floor(Math.random() * facts.length)];
+                                    }
                                 };
-
-                                async function displayMessage(message, role) {
+                        
+                                function displayMessage(message, role) {
                                     const chatMessages = document.getElementById('chat-messages');
                                     const messageDiv = document.createElement('div');
                                     let prefix = '';
                                     if (role === 'user') {
-                                        prefix = 'User: ';
+                                        prefix = 'jason$ ';
                                     } else if (role === 'bot') {
-                                        prefix = "Terminal AI: ";
+                                        prefix = "terminal: ";
                                     }
                                     messageDiv.classList.add('message');
                                     messageDiv.innerHTML = `
-                                    <div class="message-content ${role === 'user' ? 'user-message' : 'bot-message'}">
-                                        <p><strong>${prefix}</strong>${message}</p>
-                                    </div>
-                                `;
+                                        <div class="message-content ${role === 'user' ? 'user-message' : 'bot-message'}">
+                                            <p><strong>${prefix}</strong>${message.replace(/\n/g, '<br>')}</p>
+                                        </div>
+                                    `;
                                     chatMessages.appendChild(messageDiv);
                                     chatMessages.scrollTop = chatMessages.scrollHeight;
                                 }
-
+                        
                                 async function processCommand(input) {
                                     const parts = input.trim().split(' ');
                                     const command = parts[0].toLowerCase();
                                     const args = parts.slice(1).join(' ');
-
+                        
                                     if (commands[command]) {
                                         if (typeof commands[command] === 'function') {
                                             const result = await commands[command](args);
-                                            displayMessage(result, 'bot');
+                                            if (result) {
+                                                displayMessage(result, 'bot');
+                                            }
                                         } else {
                                             displayMessage(commands[command], 'bot');
                                         }
                                     } else {
-                                        displayMessage("Unknown command. Type 'help' for a list of fun commands.", 'bot');
+                                        displayMessage(`Command not found: ${command}. Type 'help' for available commands.`, 'bot');
                                     }
                                 }
-
+                        
                                 document.getElementById("send-message-btn").addEventListener("click", function () {
                                     const inputField = document.getElementById("message-input");
                                     const message = inputField.value.trim();
@@ -297,6 +420,12 @@
                                         displayMessage(message, "user");
                                         processCommand(message);
                                         inputField.value = "";
+                                    }
+                                });
+                        
+                                document.getElementById("message-input").addEventListener("keypress", function(event) {
+                                    if (event.key === "Enter") {
+                                        document.getElementById("send-message-btn").click();
                                     }
                                 });
                             </script>
