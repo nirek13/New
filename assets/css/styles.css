@@ -846,13 +846,19 @@ footer {
   color: #00ff00;
 }
 
-
+.message-content{
+  flex: 1;
+  background-color: transparent;
+  border: none;
+  outline: none;
+  color: var(--main-text-color);
+}
 #message-input {
   flex: 1;
   background-color: transparent;
   border: none;
   outline: none;
-  color: #fff;
+  color: var(--main-text-color);
 }
 
 

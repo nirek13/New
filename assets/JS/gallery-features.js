@@ -6,10 +6,10 @@ document.addEventListener('DOMContentLoaded', function() {
       "./assets/PhotoGallery/IMG_4355.png": ["architecture", "night", "laurier", "building"],
       "assets/PhotoGallery/IMG_4539.png": ["exhibition", "collision", "conference", "indoor"],
       "assets/PhotoGallery/IMG_4547.png": ["people", "collision", "conference", "speaker"],
-      "assets/PhotoGallery/IMG_4549.png": ["people", "vinoid", "khosla", "collision", "speaker"],
+      "assets/PhotoGallery/IMG_4549.png": ["people" , "collision", "speaker"],
       "assets/PhotoGallery/IMG_4556.png": ["architecture", "tower", "building", "outdoor"],
       "assets/PhotoGallery/IMG_4558.png": ["sign", "collision", "conference", "outdoor"],
-      "assets/PhotoGallery/IMG_4607.png": ["animal", "dog", "pet", "cute"]
+      "assets/PhotoGallery/IMG_4607.png": ["animal", "dog", "pet", ]
     };
     
     // Track all photos and their tags
