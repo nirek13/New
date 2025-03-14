@@ -149,17 +149,18 @@
             <div class="col-lg-6 order-lg-2 p-0">
                 <div class="text-block">
                     <h2 class="display-4 mb-3" data-aos="fade-up" data-aos-duration="1000" data-aos-offset="-30" data-aos-delay="700" data-aos-once="true" style="font-weight: 500;">🏆 About Me</h2>
+                    <p data-aos="fade-up" data-aos-duration="1000" data-aos-offset="-30" data-aos-delay="700" data-aos-once="true">
+                        Hi, I'm Nirek Shetty, a 15-year-old high school student from Toronto with a passion for building cool projects. At just 15, I've raised over $45,000 to run tech events, formed partnerships with companies like Google and Microsoft, had the opportunity to speak in front of nearly a thousand people, won international competitions, and helped establish a community of 3,500 high school and university students across Canada.
+                    </p>
+                    
                     <ul data-aos="fade-up" data-aos-duration="1000" data-aos-offset="-30" data-aos-delay="800" data-aos-once="true" style="list-style: none; padding: 0;">
                         <li>🥈 Silver Award at IOAI Canada (Through National Selection Process)</li>
                         <li>🪐 Nasa Space Apps Global Nominee (93.5k Participants) </li>
+                        <li>Group 2 Honour Roll in CCC (73/75)</li>
                         <li>🥉 3rd Rank in Canadian National Math Contest Thale (7,000 participants)</li>
-                        <li>💎 2x Founder</li>
                         <li>🏅 Best Rookie Hack at Halton Hacks Inaugural Event</li>
                         <li>🏆 2nd Place Design Award at FIRST Tech Challenge (Mississauga Event)</li>
                         <li>🏆 3rd Place Connect Award at FIRST Tech Challenge (Bolton Event)</li>
-                        <li>🎖️ Certificate of Achievement from the Canadian National Fluid Power Association</li>
-
-                        <li>🏆 WMS Award for Excellence in the Sciences </li>
                         <li>🎖️ Honour Roll Student at Brebeuf College School</li>
                         <li>🏅 5x Waterloo Distinction Winner (Pascal, Gauss, and more)</li>
                         <li>🥈 2nd Place in Pascal Contest (School-level)</li>
@@ -549,28 +550,80 @@
     <script type="module" src="brain.js"></script>
 </section>
 -->
-
 <footer>
     <div class="container p-2 p-sm-3 p-lg-4">
-        <a class="footer-body links small noselect" href="https://github.com/nirek13/me">Designed &amp; Built by Nirek Shetty<br>
+        <a class="footer-body links small noselect" href="https://github.com/nirek13/me">
+            Designed &amp; Built by Nirek Shetty<br>
             <i class="fa fa-star-o me-2"></i><span id="github-stars">0</span>
             <i class="fa fa-github-alt mx-3"></i>
             <i class="fa fa-code-fork me-2"></i><span id="github-forks">0</span>
         </a>
-        <div class ="likeys">
-        <a class="like-button" id ="likeButton" data-bss-hover-animate="tada">
-            <img width="32" height="32" src="https://img.icons8.com/isometric/50/like.png" alt="like"/>
-        </a>
-
-        <span id="likeCount"> 0 </span>
+        <div class="likeys footer-body links">
+            <button class="like-button footer-body links border-0 bg-transparent" id="likeButton" data-bss-hover-animate="pulse">
+                <i class="fa fa-heart-o" id="likeIcon"></i>
+            </button>
+            <span id="likeCount">0</span>
         </div>
-
-
-
+        <div class="view-counter mt-2 footer-body links small">
+            <i class="fa fa-eye me-2"></i><span id="viewCount">3000</span> views
+        </div>
     </div>
-
-
     <a class="scroll-to-top links hidden" href="#page-top"><i class="fa fa-angle-up"></i></a>
+
+    <script>
+        // Like button functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const likeButton = document.getElementById('likeButton');
+            const likeIcon = document.getElementById('likeIcon');
+            const likeCount = document.getElementById('likeCount');
+            
+            // Check if user has already liked
+            let liked = localStorage.getItem('liked') === 'true';
+            let count = parseInt(localStorage.getItem('likeCount') || '0');
+            
+            // Initialize UI
+            if (liked) {
+                likeIcon.classList.remove('fa-heart-o');
+                likeIcon.classList.add('fa-heart');
+            }
+            likeCount.textContent = count;
+            
+            // Like button click handler
+            likeButton.addEventListener('click', function() {
+                liked = !liked;
+                localStorage.setItem('liked', liked);
+                
+                if (liked) {
+                    count++;
+                    likeIcon.classList.remove('fa-heart-o');
+                    likeIcon.classList.add('fa-heart');
+                } else {
+                    count--;
+                    likeIcon.classList.remove('fa-heart');
+                    likeIcon.classList.add('fa-heart-o');
+                }
+                
+                likeCount.textContent = count;
+                localStorage.setItem('likeCount', count);
+            });
+            
+            // View counter
+            const viewCount = document.getElementById('viewCount');
+            let views = parseInt(localStorage.getItem('viewCount') || '3000');
+            views++;
+            viewCount.textContent = views;
+            localStorage.setItem('viewCount', views);
+        });
+        
+        // Fetch GitHub stats
+        fetch('https://api.github.com/repos/nirek13/me')
+            .then(response => response.json())
+            .then(data => {
+                document.getElementById('github-stars').textContent = data.stargazers_count;
+                document.getElementById('github-forks').textContent = data.forks_count;
+            })
+            .catch(error => console.error('Error fetching GitHub stats:', error));
+    </script>
 </footer>
 
 
