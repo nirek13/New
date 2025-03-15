@@ -110,7 +110,7 @@
   
   .photo-tag {
     padding: 0.2rem 0.5rem;
-    background-color: rgba(26, 26, 26, 0.8);
+    background-color: var(--main-bg-color);
     color: var(--main-text-color);
     border-radius: 12px;
     font-size: 0.8rem;
